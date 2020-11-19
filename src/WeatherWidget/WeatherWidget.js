@@ -11,12 +11,9 @@ export default class WeatherWidget extends React.Component {
     this.state = {
       response: []
     };
-    // this.datas = [1, 2, 3];
-    // this.datam = { zzz: 1 };
     this.getData();
   }
 
-  // componentDidMount() {
   getData() {
     fetch(url)
       .then((res) => {
@@ -26,23 +23,17 @@ export default class WeatherWidget extends React.Component {
       .then((data) => {
         console.log("data " + data);
         this.setState({ response: data });
-        // this.setState({ response: [...this.state.response, data] });
-
-        // console.log(
-        //   "resp: " + JSON.stringify(this.state.response[0].coord.lon)
-        // );
+        console.log("this.state.response " + this.state.response);
       })
       .catch(() => {
         console.log("error");
       });
   }
-  // }
 
   // componentDidMount() {}
- 
+
   render() {
-    console.log("resp1: " + this.state.response);
-    // console.log("resp1: " + this.state.response[0].coord.lon);
+    console.log("resp render: " + this.state.response);
     return (
       <>
         <WidgetLayout info={this.state.response} />
