@@ -1,9 +1,13 @@
 import React from "react";
 
 export default class WidgetLayout extends React.Component {
+  // test = JSON.stringify(this.props.info);
+
   // test = JSON.stringify(this.props.info.coord.lon);
   // constructor(props) {
   // super(props);
+  // test = JSON.stringify(props.info.coord.lon);
+  // test = this.props.info[0].coord.lon
   // this.user = this.props;
   // this.somedata = JSON.parse(this.props.info);
   // this.somedata = this.props.info;
@@ -11,11 +15,12 @@ export default class WidgetLayout extends React.Component {
   // }
 
   render() {
-    console.log("this.props.info " + this.props.info[0].coord.lon);
+    const test = JSON.stringify(this.props.info.coord.lon);
+    // console.log("this.props.info " + test);
     return (
       <>
         <div>widget</div>
-        <div>{this.props.info[0].coord.lon}</div>
+        <div>{test}</div>
       </>
     );
   }
