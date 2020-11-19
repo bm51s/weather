@@ -2,51 +2,49 @@ import React from "react";
 
 import WidgetLayout from "./WidgetLayout";
 
+const url =
+  "https://api.openweathermap.org/data/2.5/weather?q=Kyiv&units=metric&appid=5c84bd6294b249fa97ae3ca1c3ca0c4c";
+
 export default class WeatherWidget extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      response: {}
+      response: []
     };
     this.datas = [1, 2, 3];
     this.datam = { zzz: 1 };
     this.getData();
   }
 
+  // componentDidMount() {
   getData() {
-    fetch(
-      "https://api.openweathermap.org/data/2.5/weather?q=Kyiv&units=metric&appid=5c84bd6294b249fa97ae3ca1c3ca0c4c"
-    )
+    fetch(url)
       .then((res) => {
         console.log("res " + res);
         return res.json();
       })
       .then((data) => {
         console.log("data " + data);
-        //let newdata = JSON.parse(data);
-        // console.log("newdata " + newdata);
-        // this.setState({ response: newdata });
-        //  console.log(Object.entries(data));
-        //let zzz = Object.entries(data);
-        this.setState({ response: data });
-        //let zzz = JSON.parse(newdata);
-        //console.log("zzz " + zzz);
-        //this.setState({ response: zzz });
-        // this.datas = data;
-        // console.log("this.datas " + this.datas.coord.lon);
-        console.log("resp: " + this.state.response.coord.lon);
+        // this.setState({ response: data });
+        this.setState({ response: [...this.state.response, data] });
+
+        console.log(
+          "resp: " + JSON.stringify(this.state.response[0].coord.lon)
+        );
       })
       .catch(() => {
         console.log("error");
       });
   }
+  // }
 
-  componentDidMount() {}
+  // componentDidMount() {}
 
   render() {
+    console.log("resp1: " + this.state.response);
     return (
       <>
-        <WidgetLayout info={this.datas} />
+        <WidgetLayout info={this.state.response} />
       </>
     );
   }

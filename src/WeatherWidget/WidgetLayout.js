@@ -1,6 +1,7 @@
 import React from "react";
 
 export default class WidgetLayout extends React.Component {
+  // test = JSON.stringify(this.props.info.coord.lon);
   // constructor(props) {
   // super(props);
   // this.user = this.props;
@@ -10,10 +11,11 @@ export default class WidgetLayout extends React.Component {
   // }
 
   render() {
+    console.log("this.props.info " + this.props.info[0].coord.lon);
     return (
       <>
         <div>widget</div>
-        <div>{this.props.info}</div>
+        <div>{this.props.info[0].coord.lon}</div>
       </>
     );
   }
