@@ -52,6 +52,8 @@ export default class WeatherWidget extends React.Component {
 
   render() {
     console.log("resp1: " + this.state.response);
+    let sunrise = new Date(this.state.sunrise * 1000).toString();
+    let sunset = new Date(this.state.sunset * 1000).toString();
     // let { info } = this.state.response;
     return (
       <>
@@ -64,8 +66,8 @@ export default class WeatherWidget extends React.Component {
         <div>wind: {this.state.wind}</div>
         <div>wind_deg: {this.state.wind_deg}</div>
         <div>clouds: {this.state.clouds}</div>
-        <div>sunrise: {this.state.sunrise}</div>
-        <div>sunset: {this.state.sunset}</div>
+        <div>sunrise: {sunrise}</div>
+        <div>sunset: {sunset}</div>
       </>
     );
   }
